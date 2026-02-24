@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-primary: #050b18;
+    --bg-secondary: #0a1628;
+    --bg-card: rgba(14, 25, 50, 0.7);
+    --bg-card-hover: rgba(20, 35, 65, 0.85);
+    --border-color: rgba(99, 179, 237, 0.15);
+    --border-glow: rgba(99, 179, 237, 0.4);
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --accent-red: #ef4444;
+    --accent-orange: #f59e0b;
+    --accent-green: #10b981;
+    --text-primary: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-muted: #475569;
+    --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+    --radius-card: 16px;
+    --radius-input: 10px;
+}
+
+html,
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+#root {
+    min-height: 100vh;
+    max-width: 100%;
+    padding: 0;
+    text-align: left;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 3px;
+}
+
+/* Animated background grid */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glowing orbs */
+body::after {
+    content: '';
+    position: fixed;
+    top: -200px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: orb-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(80px, 60px);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse-ring {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+}
+
+@keyframes counter-up {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease forwards;
+}
+
+.animate-slide-left {
+    animation: slide-in-left 0.5s ease forwards;
+}
+
+.animate-counter {
+    animation: counter-up 0.5s ease forwards;
+}
